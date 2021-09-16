@@ -1,0 +1,12 @@
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/bin/Debug/net5.0/Domain.deps.json
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/bin/Debug/net5.0/Domain.dll
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/bin/Debug/net5.0/ref/Domain.dll
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/bin/Debug/net5.0/Domain.pdb
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/obj/Debug/net5.0/Domain.csprojAssemblyReference.cache
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/obj/Debug/net5.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/obj/Debug/net5.0/Domain.AssemblyInfoInputs.cache
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/obj/Debug/net5.0/Domain.AssemblyInfo.cs
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/obj/Debug/net5.0/Domain.csproj.CoreCompileInputs.cache
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/obj/Debug/net5.0/Domain.dll
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/obj/Debug/net5.0/ref/Domain.dll
+/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/obj/Debug/net5.0/Domain.pdb
