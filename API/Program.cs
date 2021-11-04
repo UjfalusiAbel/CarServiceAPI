@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Domain;
+using Persistance;
 
 namespace API
 {
@@ -13,6 +15,7 @@ namespace API
     {
         public static void Main(string[] args)
         {
+            MongoCRUD.Initialize("CarServiceDB");
             CreateHostBuilder(args).Build().Run();
         }
 

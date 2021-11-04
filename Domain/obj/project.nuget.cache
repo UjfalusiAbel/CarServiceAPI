@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xy4mJqgSHOY7cu31p9kW5Hx2SijfwrmkmqyZFrkTuDhU/J7Fb3J0mDxp/Sw6m7lZ4DxzMisOdG4kx4crn1rzlg==",
+  "dgSpecHash": "ct+Iz9wU7G0XEeftj8hZfGe3Lh4gJAT6LskkDbW+pV0yvVLnd4mJSFwlXj4FIJ05yYQ9fEArpXrUPzDe49NyGA==",
   "success": true,
   "projectFilePath": "/run/media/ujfalusiabel/Dokumentumok/Munkák/ASP.NET/CarServiceAPI/Domain/Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/ujfalusiabel/.nuget/packages/mongodb.bson/2.13.2/mongodb.bson.2.13.2.nupkg.sha512",
+    "/home/ujfalusiabel/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
