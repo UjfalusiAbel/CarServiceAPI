@@ -10,10 +10,7 @@ namespace Application.Services
 {
     public class ServiceList
     {
-        public class Query:IRequest<List<Service>>
-        {
-
-        }
+        public class Query:IRequest<List<Service>>{}
 
         public class Handler:IRequestHandler<Query, List<Service>>
         {

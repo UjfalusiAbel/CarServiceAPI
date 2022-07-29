@@ -1,23 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Persistance;
-using AutoMapper;
 using MediatR;
 using Domain;
+using Persistance;
+using AutoMapper;
 
-namespace Application.Services
+namespace Application.Offers
 {
-    public class UpdateService
+    public class UpdateOffer
     {
         public class Command:IRequest
         {
-            public Service Service { get; set;}
+            public Offer Offer { get; set; }
         }
 
         public class Handler:IRequestHandler<Command>
         {
             private readonly DataContext _context;
-            public readonly IMapper _mapper;
+            private readonly IMapper _mapper;
             public Handler(DataContext context, IMapper mapper)
             {
                 _context=context;
@@ -25,8 +28,8 @@ namespace Application.Services
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var service = await _context.Services.FindAsync(request.Service.Id);
-                _mapper.Map(request.Service, service);
+                var offer = await _context.Offers.FindAsync(request.Offer.Id);
+                _mapper.Map(request.Offer, offer);
                 await _context.SaveChangesAsync();
                 return Unit.Value;
             }

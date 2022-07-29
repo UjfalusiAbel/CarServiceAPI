@@ -5,15 +5,15 @@ using AutoMapper;
 using MediatR;
 using Domain;
 
-namespace Application.Services
+namespace Application.Reviews
 {
-    public class UpdateService
+    public class UpdateReview
     {
         public class Command:IRequest
         {
-            public Service Service { get; set;}
+            public Review Review { get; set; }
         }
-
+        
         public class Handler:IRequestHandler<Command>
         {
             private readonly DataContext _context;
@@ -25,8 +25,8 @@ namespace Application.Services
             }
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var service = await _context.Services.FindAsync(request.Service.Id);
-                _mapper.Map(request.Service, service);
+                var review = await _context.Reviews.FindAsync(request.Review.Id);
+                _mapper.Map(request.Review, review);
                 await _context.SaveChangesAsync();
                 return Unit.Value;
             }

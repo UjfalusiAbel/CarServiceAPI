@@ -1,20 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using MediatR;
 using Application.Services;
+using Application.Reviews;
+using Application.Offers;
+using Application.Core;
 using Persistance;
+using Domain;
+using MediatR;
+
 
 namespace API
 {
@@ -48,6 +46,12 @@ namespace API
                 opt.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
             services.AddMediatR(typeof(ServiceList.Handler).Assembly);
+            services.AddMediatR(typeof(OfferList.Handler).Assembly);
+            services.AddMediatR(typeof(ReviewList.Handler).Assembly);
+
+            services.AddAutoMapper(typeof(ServiceMappingProfiles).Assembly);
+            services.AddAutoMapper(typeof(OfferMappingProfiles).Assembly);
+            services.AddAutoMapper(typeof(ReviewMappingProfiles).Assembly);
         
         }
 

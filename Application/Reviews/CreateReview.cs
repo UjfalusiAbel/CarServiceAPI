@@ -4,19 +4,18 @@ using System.Threading.Tasks;
 using Persistance;
 using MediatR;
 
-namespace Application.Offers
+namespace Application.Reviews
 {
-    public class CreateOffer
+    public class CreateReview
     {
-        public class Command : IRequest
+        public class Command: IRequest
         {
-            public Offer Offer { get; set; }
+            public Review Review { get; set; }
         }
 
-        public class Handler : IRequestHandler<Command>
+        public class Handler:IRequestHandler<Command>
         {
             private readonly DataContext _context;
-
             public Handler(DataContext context)
             {
                 _context = context;
@@ -24,7 +23,7 @@ namespace Application.Offers
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                _context.Offers.Add(request.Offer);
+                _context.Reviews.Add(request.Review);
                 await _context.SaveChangesAsync();
                 return Unit.Value;
             }

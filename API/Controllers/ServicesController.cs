@@ -1,41 +1,50 @@
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using MediatR;
-using Domain;
 using Application.Services;
-using Persistance;
+using Domain;
 
 namespace API.Controllers
 {
     public class ServicesController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Service>>> GetServices()
+        public async Task<ActionResult<List<Service>>> GetServices(CancellationToken cancellationToken)
         {
-            return await Mediator.Send(new ServiceList.Query());
+            return await Mediator.Send(new ServiceList.Query(), cancellationToken);
         }
 
         [HttpGet("{id}")] // services/id
-        public async Task<ActionResult<Service>> GetService(Guid id)
+        public async Task<ActionResult<Service>> GetService(Guid id, CancellationToken cancellationToken)
         {
-            return await Mediator.Send(new ServiceDetails.Query { Id = id });
+            return await Mediator.Send(new ServiceDetails.Query { Id = id }, cancellationToken);
+        }
+
+        [HttpGet("{county}/{town}")]
+        public async Task<ActionResult<List<Service>>> GetServicesByLocation(string county, string town, CancellationToken cancellationToken)
+        {
+            return await Mediator.Send(new ServiceListByLocation.Query { County = county, Town = town });
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateService(Service service)
+        public async Task<IActionResult> CreateService(Service service, CancellationToken cancellationToken)
         {
-           return Ok(await Mediator.Send(new CreateService.Command {Service = service}));
+           return Ok(await Mediator.Send(new CreateService.Command {Service = service}, cancellationToken));
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateService(Guid id, Service service)
+        public async Task<IActionResult> UpdateService(Guid id, Service service, CancellationToken cancellationToken)
         {
            service.Id = id;
-           return Ok(await Mediator.Send(new UpdateService.Command{ Service = service }));
+           return Ok(await Mediator.Send(new UpdateService.Command{ Service = service }, cancellationToken));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteService(Guid id, CancellationToken cancellationToken)
+        {
+            return Ok(await Mediator.Send(new DeleteService.Command{ Id = id }, cancellationToken));
         }
 
     }
