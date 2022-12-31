@@ -8,15 +8,21 @@ using Domain;
 
 namespace API.Controllers
 {
-    public class ReviewsController:BaseController
+    public class ReviewsController : BaseController
     {
         [HttpGet("{id}")]
         public async Task<ActionResult<Review>> GetReview(Guid id, CancellationToken cancellationToken)
         {
-            return await Mediator.Send(new ReviewDetails.Query{ Id = id }, cancellationToken);
+            return await Mediator.Send(new ReviewDetails.Query { Id = id }, cancellationToken);
         }
 
-       [HttpPost]
+        [HttpGet("{serviceId}")]
+        public async Task<ActionResult<List<Review>>> GetReviewsByService(Guid serviceId, CancellationToken cancellationToken)
+        {
+            return await Mediator.Send(new ReviewListByService.Query { ServiceId = serviceId }, cancellationToken);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CreatReview(Review review, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(new CreateReview.Command { Review = review }, cancellationToken));

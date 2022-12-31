@@ -12,25 +12,31 @@ using Persistance;
 
 namespace API.Controllers
 {
-    public class OffersController:BaseController
+    public class OffersController : BaseController
     {
         [HttpGet("{id}")]
         public async Task<ActionResult<Offer>> GetOffer(Guid id, CancellationToken cancellationToken)
         {
-            return await Mediator.Send(new OfferDetails.Query{ Id = id }, cancellationToken);
+            return await Mediator.Send(new OfferDetails.Query { Id = id }, cancellationToken);
         }
 
-       [HttpPost]
+        [HttpGet("{serviceId}")]
+        public async Task<ActionResult<List<Offer>>> GetOfferByService(Guid serviceId, CancellationToken cancellationToken)
+        {
+            return await Mediator.Send(new OfferListByService.Query { ServiceId = serviceId }, cancellationToken);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CreateOffer(Offer offer, CancellationToken cancellationToken)
         {
-            return Ok(await Mediator.Send(new CreateOffer.Command{ Offer = offer }, cancellationToken));
+            return Ok(await Mediator.Send(new CreateOffer.Command { Offer = offer }, cancellationToken));
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateOffer(Guid id, Offer offer, CancellationToken cancellationToken)
         {
             offer.Id = id;
-            return Ok(await Mediator.Send(new UpdateOffer.Command{ Offer = offer }, cancellationToken));
+            return Ok(await Mediator.Send(new UpdateOffer.Command { Offer = offer }, cancellationToken));
         }
 
         [HttpDelete("{id}")]
